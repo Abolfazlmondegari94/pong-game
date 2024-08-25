@@ -15,12 +15,12 @@ BALL_SPEED = 6
 
 # Init
 pygame.init()
-gd = pygame.display.set_mode((WIDTH, HEIGHT))
+game_display = pygame.display.set_mode((WIDTH, HEIGHT))
 pygame.display.set_caption(TITLE_GAME)
 
 # Objects
 opponent = pygame.Rect(20, HEIGHT // 2 - P_HEIGHT // 2, P_WIDTH, P_HEIGHT)
-player = pygame.Rect(800 - 20 - P_WIDTH, 400 // 2 - P_HEIGHT // 2, P_WIDTH, P_HEIGHT)
+player = pygame.Rect(WIDTH - 20 - P_WIDTH, HEIGHT // 2 - P_HEIGHT // 2, P_WIDTH, P_HEIGHT)
 FONT = pygame.font.Font(None, 36)
 clock = pygame.time.Clock()
 ball = pygame.Rect(WIDTH // 2 - BALL_SIZE[0] // 2, HEIGHT // 2 - BALL_SIZE[1] // 2, *BALL_SIZE)
@@ -85,15 +85,15 @@ while True:
 
     # Drawing
     def drawing():
-        gd.fill(BG_COLOR)
-        show_score(gd, str(opponent_score), WHITE, True)
-        show_score(gd, str(player_score), WHITE, False)
-        pygame.draw.ellipse(gd, WHITE, ball)
-        pygame.draw.rect(gd, WHITE, player)
-        pygame.draw.circle(gd, WHITE, (400, 200), 100, 4)
-        pygame.draw.rect(gd, WHITE, opponent)
-        pygame.draw.line(gd, WHITE, (WIDTH // 2, 0), (WIDTH // 2, HEIGHT))
-        pygame.draw.circle(gd, WHITE, (400, 200), 20, 3)
+        game_display.fill(BG_COLOR)
+        show_score(game_display, str(opponent_score), WHITE, True)
+        show_score(game_display, str(player_score), WHITE, False)
+        pygame.draw.ellipse(game_display, WHITE, ball)
+        pygame.draw.rect(game_display, WHITE, player)
+        pygame.draw.circle(game_display, WHITE, (400, 200), 100, 4)
+        pygame.draw.rect(game_display, WHITE, opponent)
+        pygame.draw.line(game_display, WHITE, (WIDTH // 2, 0), (WIDTH // 2, HEIGHT))
+        pygame.draw.circle(game_display, WHITE, (400, 200), 20, 3)
 
     drawing()
     pygame.display.update()
